@@ -1,0 +1,36 @@
+<app-progress-bar *ngIf="loading"></app-progress-bar>
+<div *ngIf="!loading" class="row mt-1">
+    <div class="col-lg-4 offset-lg-4">
+        <div class="card text-white bg-secondary mb-3" style="max-width: 50rem;">
+            <div class="card-header text-center">{{ operacion }} Producto</div>
+            <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="addProduct()">
+                
+                <input formControlName="name" type="text" class="form-control " placeholder="Ingrese nombre">
+                <small *ngIf="form.get('name')?.hasError('required')" id="emailHelp" class="form-text text-muted ">Nombre de producto</small>
+
+                <input formControlName="description" type="text" class="form-control mt-2" placeholder="Descripcion del producto ">
+                <small *ngIf="form.get('description')?.hasError('required')"  id="emailHelp" class="form-text text-muted  ">Escriba la descripcion del producto</small>
+                <input type="number" formControlName="price"  class="form-control mt-2" placeholder="Ingrese precio">
+                <small *ngIf="form.get('price')?.hasError('required')" id="emailHelp" class="form-text text-muted ">Precio de producto</small>
+                <input type="number"formControlName="stock"  class="form-control mt-2" placeholder="Ingrese stock">
+                <small *ngIf="form.get('stock')?.hasError('required')" id="emailHelp" class="form-text text-muted ">Stock maximo</small>
+
+                <div class="row mt-2 text-center">
+                    <div class="col-lg-6">
+                        <button [disabled]="form.invalid" type="submit" class="btn btn-success">Aceptar</button>
+                    </div>
+                    <div class="col-lg-6">
+                        <button  routerLink="/" type="button" class="btn btn-dark ">Volver</button>
+                    </div>
+                </div>
+                </form>
+                
+             
+            </div>
+          </div>
+    </div>
+</div>
+    
+    
+
